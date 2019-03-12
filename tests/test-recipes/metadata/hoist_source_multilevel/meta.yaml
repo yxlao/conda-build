@@ -1,6 +1,0 @@
-package:
-  name: mypkg
-  version: 1.0.0
-
-source:
-  url: mypkg.zip

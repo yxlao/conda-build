@@ -1,7 +1,0 @@
-package:
-  name: test_empty_platform_yields_default
-  version: 1.0
-
-requirements:
-  build:
-    - {{ compiler('c') }}

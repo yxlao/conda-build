@@ -1,7 +1,0 @@
-package:
-  name: test_downstream_with_test_fail
-  version: 1.0
-
-test:
-  commands:
-    - exit 1

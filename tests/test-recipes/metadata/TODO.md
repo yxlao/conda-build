@@ -1,4 +1,0 @@
-- tests
-- about
-- app
-- selectors

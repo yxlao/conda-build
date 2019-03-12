@@ -1,4 +1,0 @@
-# force cross-compiling
-target_platform:
-  - linux-64     [not linux]
-  - osx-64     [linux]

@@ -1,3 +1,0 @@
-- build environment variables
-- pre/post link/unlink
-- post-build version

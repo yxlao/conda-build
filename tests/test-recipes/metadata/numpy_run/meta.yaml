@@ -1,9 +1,0 @@
-package:
-  name: conda-build-test-numpy-run
-  version: 1.0
-
-requirements:
-  run:
-    - python
-    - numpy
-    - nomkl   # [unix]

@@ -1,9 +1,0 @@
-package:
-  name: compiler-test
-  version: 1.0
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - {{ compiler('fortran') }}

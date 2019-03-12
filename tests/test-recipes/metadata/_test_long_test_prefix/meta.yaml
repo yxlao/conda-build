@@ -1,7 +1,0 @@
-package:
-  name: test_long_test_prefix
-  version: 1.0
-
-requirements:
-  run:
-    - python

@@ -1,7 +1,0 @@
-package:
-    name: foobar
-    version: 1.0
-
-test:
-    commands:
-        - exit 1

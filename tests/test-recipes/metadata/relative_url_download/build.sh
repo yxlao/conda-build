@@ -1,1 +1,0 @@
-cp test $PREFIX

@@ -1,9 +1,0 @@
-package:
-  name: conda-build-test-has-prefix-files
-  version: 1.0
-
-build:
-  binary_has_prefix_files:
-    - binary-has-prefix
-  has_prefix_files:
-    - has-prefix

@@ -1,9 +1,0 @@
-package:
-  name: conda-build-test-cmake-generator
-  version: 1.0
-
-requirements:
-  build:
-    - cmake
-    - {{ compiler("c") }}
-    - {{ compiler("cxx") }}

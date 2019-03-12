@@ -1,7 +1,0 @@
-package:
-  name: cross
-  version: 1.0
-
-requirements:
-  build:
-    - {{ compiler('c') }}
