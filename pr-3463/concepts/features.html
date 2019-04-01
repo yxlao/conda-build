@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Features &mdash; conda build 3.17.8+142.gef016a3.dirty documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="User guide" href="../user-guide/index.html" />
+    <link rel="prev" title="Package naming conventions" href="package-naming-conv.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> conda build
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.17.8+142.gef016a3.dirty
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install-conda-build.html">Installing and updating conda build</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Concepts</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="package-anatomy.html">Anatomy of a package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="channels.html">Conda channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generating-index.html">Channels and generating an index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recipe.html">Conda build recipes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="package-naming-conv.html">Package naming conventions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#what-is-a-package">What is a “package”?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#what-about-channels">What about channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#building-anaconda-installers">Building Anaconda installers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/index.html">User guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/index.html">Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">conda build</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Concepts</a> &raquo;</li>
+        
+      <li>Features</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="features">
+<span id="concepts-features"></span><h1>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h1>
+<p>Features are a way to track differences in two packages that have
+the same name and version. For example, a feature might indicate
+a specialized compiler or runtime, or a fork of a package. The
+canonical example of a feature is the mkl feature in Anaconda
+Accelerate. Packages that are compiled against MKL, such as
+NumPy, have the mkl feature set. The mkl metapackage has the mkl
+feature set in track_features, so that installing it installs
+the mkl feature. Feature names are independent of package
+names---it is a coincidence that mkl is both the name of a
+package and the feature that it tracks.</p>
+<p>Think of features as belonging to the environment the package is
+installed into, not the package itself. When a feature is
+installed, conda automatically changes to a package with that
+feature if it exists. For example, when the mkl feature is
+installed, regular NumPy is removed and the NumPy package with
+the mkl feature is installed.  Enabling a feature does not
+install any packages that are not already installed, but all
+future packages with that feature that are installed into that
+environment will be preferred.</p>
+<p>To install a feature, install a package that tracks it. To remove
+a feature, use <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">remove</span> <span class="pre">--features</span></code>.</p>
+<p>It is a good idea to create a metapackage for track_features.
+If you add track_features to a package that also has versions
+without that feature, then the versions without that feature will
+never be selected, because conda will always add the feature when
+it is installed from the track_features specification of your
+package with the feature.</p>
+<p>EXAMPLE: If you want to create some packages with the feature
+debug, you would create several packages with the following
+code:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">build</span><span class="p">:</span>
+  <span class="nt">features</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">debug</span>
+</pre></div>
+</div>
+<p>Then you would create a special metapackage:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">package</span><span class="p">:</span>
+  <span class="c1"># This name doesn&#39;t have to be the same as the feature, but can avoid confusion if it is</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">debug</span>
+  <span class="c1"># This need not relate to the version of any of the packages with the</span>
+  <span class="c1"># feature. It is just a version for this metapackage.</span>
+  <span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+
+<span class="nt">build</span><span class="p">:</span>
+  <span class="nt">track_features</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">debug</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../user-guide/index.html" class="btn btn-neutral float-right" title="User guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="package-naming-conv.html" class="btn btn-neutral float-left" title="Package naming conventions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Anaconda, Inc.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
