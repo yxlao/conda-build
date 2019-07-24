@@ -1,0 +1,678 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Release notes &mdash; conda build 3.18.8+21.gdcec044.dirty documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/conda-logo.png"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Tutorial template" href="resources/tutorial-template.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> conda build
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.18.8+21.gdcec044.dirty
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install-conda-build.html">Installing and updating conda build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts/index.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide/index.html">User guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources/index.html">Resources</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Release notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">3.18.9 (2019-07-23)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#enhancements">Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bug-fixes">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docs">Docs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other">Other</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#contributors">Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">3.18.8 (2019-07-18)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">3.18.7 (2019-07-09)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">3.18.6 (2019-06-26)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">3.18.5 (2019-06-25)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id15">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id17">3.18.4 (2019-06-21)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id18">Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id21">3.18.3 (2019-06-20)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id22">Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deprecations">Deprecations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id25">3.18.2 (2019-05-26)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id26">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id27">Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id28">3.18.1 (2019-05-18)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id29">Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id30">Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id31">3.18.0 (2019-05-17)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id32">Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id33">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id34">Docs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id35">Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id36">3.17.8 (2019-01-26)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id37">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id38">Other</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id39">Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id40">3.17.7 (2019-01-16)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id41">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id42">Contributors</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">conda build</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Release notes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="release-notes">
+<h1>Release notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
+<p>This information is drawn from the GitHub conda-build project
+changelog: <a class="reference external" href="https://github.com/conda/conda-build/blob/master/CHANGELOG.txt">https://github.com/conda/conda-build/blob/master/CHANGELOG.txt</a></p>
+<div class="section" id="id1">
+<h2>3.18.9 (2019-07-23)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="enhancements">
+<h3>Enhancements<a class="headerlink" href="#enhancements" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Add --use-channeldata argument to conda render/build.</li>
+<li>Extract the part in the skeletons pypi responsible to get the package metadata to a free function.</li>
+<li>Creat unittests for the get_package_metadata (skeletons/pypi.py) and for the new functions.</li>
+</ul>
+</div>
+<div class="section" id="bug-fixes">
+<h3>Bug fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Limit threads to 61 on Windows.</li>
+<li>Do not use channeldata for run_exports unless --use-channeldata specified.</li>
+<li>Finalize top-level metadata if not present as an output.</li>
+</ul>
+</div>
+<div class="section" id="docs">
+<h3>Docs<a class="headerlink" href="#docs" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Add 3.18.7 release notes</li>
+</ul>
+</div>
+<div class="section" id="other">
+<h3>Other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Add disable_pip to FIELDS</li>
+</ul>
+</div>
+<div class="section" id="contributors">
+<h3>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>&#64;jjhelmus</li>
+<li>&#64;rrigdon</li>
+<li>&#64;Bezier89</li>
+<li>&#64;jakirkham</li>
+<li>&#64;marcelotrevisani</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>3.18.8 (2019-07-18)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Enhancements<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>License_file can optionally be a yaml list</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>Bug fixes<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Fix readup of existing index.json in cache while extracting</li>
+<li>Fix spurious post build errors/warning message</li>
+<li>Merge channeldata from all urls</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>Contributors<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>&#64;msarahan</li>
+<li>&#64;rrigdon</li>
+<li>&#64;jjhelmus</li>
+<li>&#64;isuruf</li>
+<li>&#64;ddamiani</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>3.18.7 (2019-07-09)<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h3>Enhancements<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Update authorship for 3.18.7</li>
+<li>Add note on single threading for indexing during build</li>
+<li>Add in fallback for run_exports when channeldata not available</li>
+<li>Make pins for current_repodata additive - always newest, and pins are additions to that</li>
+<li>Limit indexing in build to using one thread</li>
+<li>Speed up by allowing empty run_exports entries in channeldata be valid results</li>
+<li>Bump conda-package-handling to 1.3+</li>
+<li>Add test for run_exports without channeldata</li>
+<li>Fallback to file-based run_exports if channeldata has no results</li>
+<li>Add Mozilla as valid license family</li>
+<li>Add in fallback for run_exports when channeldata not available</li>
+<li>Updated tutorials and resource documentation</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>Bug fixes<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Flake8 and test fixes from pytest deprecations</li>
+<li>Fix in render.py::_read_specs_from_package</li>
+<li>Fix for pkg_loc</li>
+<li>Fix conda debug output being suppressed</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h3>Contributors<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>&#64;msarahan</li>
+<li>&#64;rrigdon</li>
+<li>&#64;scopatz</li>
+<li>&#64;mbargull</li>
+<li>&#64;jakirkham</li>
+<li>&#64;oleksandr-pavlyk</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>3.18.6 (2019-06-26)<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id11">
+<h3>Enhancements<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Package sha256 sums are included in index.html</li>
+</ul>
+</div>
+<div class="section" id="id12">
+<h3>Bug fixes<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Fix bug where package filenames were not included in the index.html</li>
+</ul>
+</div>
+<div class="section" id="id13">
+<h3>Contributors<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>&#64;rrigdon</li>
+<li>&#64;jjhelmus</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id14">
+<h2>3.18.5 (2019-06-25)<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id15">
+<h3>Bug fixes<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Fix one more keyerror with missing timestamp data</li>
+<li>When indexing, allow .tar.bz2 files to use .conda cache, but not vice versa.  This acts as a sanity check on the .conda files.</li>
+<li>Add build/rpaths_patcher to meta.yaml to allow switching between lief and patchelf for binary mangling</li>
+</ul>
+</div>
+<div class="section" id="id16">
+<h3>Contributors<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>&#64;mingwandroid</li>
+<li>&#64;msarahan</li>
+<li>&#64;csosborn</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id17">
+<h2>3.18.4 (2019-06-21)<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id18">
+<h3>Enhancements<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Channeldata reworked a bit to try to capture any available run_exports for all versions available</li>
+</ul>
+</div>
+<div class="section" id="id19">
+<h3>Bug fixes<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Make &quot;timestamp&quot; an optional field in conda index operations</li>
+</ul>
+</div>
+<div class="section" id="id20">
+<h3>Contributors<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>&#64;msarahan</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id21">
+<h2>3.18.3 (2019-06-20)<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id22">
+<h3>Enhancements<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Make VS2017 default Visual Studio</li>
+<li>Add hook for customizing the behavior of conda render</li>
+<li>Drop <cite>/usr</cite> from CDT skeleton path</li>
+<li>Update cran skeleton to use m2w64 compilers for windows instead of toolchain.
+The linter is telling since long: Using toolchain directly in this manner is deprecated.</li>
+</ul>
+</div>
+<div class="section" id="id23">
+<h3>Bug fixes<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Update cran skeleton to not use toolchain for win</li>
+<li>Fix package_has_file so it supports .conda files (use cph)</li>
+<li>Fix package_has_file function for .conda format</li>
+<li>Fix off-by-one path trimming in prefix_files</li>
+<li>Disable overlinking checks when no files in the package have any shared library linkage</li>
+<li>Try to avoid finalizing top-level metadata twice</li>
+<li>Try to address permission errors on Appveyor and Azure by falling back to copy and warning (not erroring) if removing a file after copying fails</li>
+<li>Reduce the files inspected/loaded for channeldata, so that indexing goes faster</li>
+</ul>
+</div>
+<div class="section" id="deprecations">
+<h3>Deprecations<a class="headerlink" href="#deprecations" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>The repodata2.json file is no longer created as part of indexing.  It was not used by anything.  It has been removed as an optimization.  Its purpose was to explore namespaces and we'll bring its functionality back when we address that fully.</li>
+</ul>
+</div>
+<div class="section" id="id24">
+<h3>Contributors<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>&#64;mingwandroid</li>
+<li>&#64;msarahan</li>
+<li>&#64;rrigdon</li>
+<li>&#64;soapy1</li>
+<li>&#64;mariusvniekerk</li>
+<li>&#64;jakirkham</li>
+<li>&#64;dbast</li>
+<li>&#64;duncanmmacleod</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id25">
+<h2>3.18.2 (2019-05-26)<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id26">
+<h3>Bug fixes<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Speed up post-link checks</li>
+<li>Fix activation not running during tests</li>
+<li>Improve indexing to show status better, and fix bug where size/hashes were being mixed up between .tar.bz2 and .conda files</li>
+</ul>
+</div>
+<div class="section" id="id27">
+<h3>Contributors<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>&#64;mingwandroid</li>
+<li>&#64;msarahan</li>
+<li>&#64;rrigdon</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id28">
+<h2>3.18.1 (2019-05-18)<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id29">
+<h3>Enhancements<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Rearrange steps in index.py to optimize away unnecessary work</li>
+<li>Restore parallel extract and hash in index operations</li>
+</ul>
+</div>
+<div class="section" id="id30">
+<h3>Contributors<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>&#64;msarahan</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id31">
+<h2>3.18.0 (2019-05-17)<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id32">
+<h3>Enhancements<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Set R_USER environment variable when building R packages</li>
+<li>Make Centos 7 default cdt distribution for linux-aarch64</li>
+<li>Bump default Python3 version to 3.7 for CI</li>
+<li>Build docs if any docs related file changes</li>
+<li>Add support for conda pkgv2 (.conda) format</li>
+<li>Add creation of &quot;current_repodata.json&quot; - like repodata.json, but only has the newest version of each file</li>
+<li>Change repodata layout to support .conda files. They live under the &quot;packages.conda&quot; key and have similar subkeys to their .tar.bz2 counterparts.</li>
+<li>Always show display actions, regardless of verbosity level</li>
+<li>Ignore registry autorun for all cmd.exe invocations</li>
+<li>Relax default pinning on r-base for benefit of noarch R packages</li>
+<li>Make conda index produce repodata_from_packages.json{,.bz2} which contains unpatched metadata</li>
+<li>Use a shorter environment prefix when testing on unix-like platforms</li>
+<li>Prevent pip from clobbering conda installed Python packages by populating .dist_info INSTALLER file</li>
+</ul>
+</div>
+<div class="section" id="id33">
+<h3>Bug fixes<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Allow build/missing_dso_whitelist section to be empty</li>
+<li>Make conda-debug honor custom channels passed using -c</li>
+<li>Do not attempt linkages inspection via lief if not installed</li>
+<li>Fix all lief related regressions brought in v3.17.x</li>
+<li>Fix ZeroDivisionError in ELF sections that have zero entries</li>
+<li><cite>binary_has_prefix_files</cite> and <cite>text_has_prefix_files</cite> now override the automatically detected prefix replacement mode</li>
+<li>Handle special characters properly in pypi conda skeleton</li>
+<li>Build recipes in order of dependencies when passed to CB as directories</li>
+<li>Fix run_test script name for recipes with multiple outputs</li>
+<li>Fix recursion error with subpackages and build_id</li>
+<li>Avoid mutating global variable to fix tests on Windows</li>
+<li>Update CRAN license test case (replace r-ruchardet with r-udpipe)</li>
+<li>Update utils.filter_files to filter out generated .conda_trash files</li>
+<li>Replace stdlib glob with utils.glob. Latter supports recursion (**)</li>
+</ul>
+</div>
+<div class="section" id="id34">
+<h3>Docs<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Updated Sphinx theme to make notes and warnings more visible</li>
+<li>Added tutorial on building R-language packages using skeleton CRAN</li>
+<li>Add 37 to the list of valid values for CONDA_PY</li>
+<li>Corrected argparse rendering error</li>
+<li>Added tutorials section, reorganized content, and added a Windows tutorial</li>
+<li>Added Concepts section, removed extraneous content</li>
+<li>Added release notes section</li>
+<li>Reorganized sections</li>
+<li>Clarify to use 'where' on Windows and 'which' on Linux to inspect files in PATH</li>
+<li>Add RPATH information to compiler-tools documentation</li>
+<li>Improve the documentation on how to use the macOS SDK in build scripts.</li>
+<li>Document <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">build</span> <span class="pre">purge-all</span></code>.</li>
+<li>Fix user-guide index</li>
+<li>Add example for meta.yaml</li>
+<li>Updated theme</li>
+<li>Reorganized conda-build topics, updated link-scripts</li>
+</ul>
+</div>
+<div class="section" id="id35">
+<h3>Contributors<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>&#64;mingwandroid</li>
+<li>&#64;msarahan</li>
+<li>&#64;rrigdon</li>
+<li>&#64;jjhelmus</li>
+<li>&#64;nehaljwani</li>
+<li>&#64;scopatz</li>
+<li>&#64;Bezier89</li>
+<li>&#64;rrigdon</li>
+<li>&#64;isuruf</li>
+<li>&#64;teake</li>
+<li>&#64;jdblischak</li>
+<li>&#64;bilderbuchi</li>
+<li>&#64;soapy1</li>
+<li>&#64;ESSS</li>
+<li>&#64;tjd2002</li>
+<li>&#64;tovrstra</li>
+<li>&#64;chrisburr</li>
+<li>&#64;katietz</li>
+<li>&#64;hrzafer</li>
+<li>&#64;zdog234</li>
+<li>&#64;gabrielcnr</li>
+<li>&#64;saraedum</li>
+<li>&#64;uilianries</li>
+<li>&#64;theultimate1</li>
+<li>&#64;scw</li>
+<li>&#64;spalmrot-tic</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id36">
+<h2>3.17.8 (2019-01-26)<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id37">
+<h3>Bug fixes<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Provide fallback from libarchive back to Python tarfile handling for handling tarfiles containing symlinks on windows</li>
+</ul>
+</div>
+<div class="section" id="id38">
+<h3>Other<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Rever support added for releasing conda-build</li>
+</ul>
+</div>
+<div class="section" id="id39">
+<h3>Contributors<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>&#64;msarahan</li>
+<li>&#64;jjhelmus</li>
+<li>&#64;scopatz</li>
+<li>&#64;rrigdon</li>
+<li>&#64;ax3l</li>
+<li>&#64;rrigdon</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id40">
+<h2>3.17.7 (2019-01-16)<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id41">
+<h3>Bug fixes<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Respect context.offline setting  #3328</li>
+<li>Don't write bytecode when building noarch: Python packages  #3330</li>
+<li>Escape path separator in repl  #3336</li>
+<li>Remove deprecated sudo statement from travis CI configuration  #3338</li>
+<li>Fix running of test scripts in outputs  #3343</li>
+<li>Allow overriding one key of zip_keys as long as length of group agrees  #3344</li>
+<li>Fix compatibility with conda 4.6.0+  #3346</li>
+<li>Update centos 7 skeleton (CDT) URL  #3350</li>
+</ul>
+</div>
+<div class="section" id="id42">
+<h3>Contributors<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>&#64;iainsgillis</li>
+<li>&#64;isuruf</li>
+<li>&#64;jjhelmus</li>
+<li>&#64;nsoranzo</li>
+<li>&#64;msarahan</li>
+<li>&#64;qwhelan</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="resources/tutorial-template.html" class="btn btn-neutral float-left" title="Tutorial template" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Anaconda, Inc.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
