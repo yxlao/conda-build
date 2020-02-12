@@ -1,0 +1,480 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Channels and generating an index &mdash; conda-build 3.18.11+100.g3543c71.dirty documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/conda-logo.png"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Conda-build recipes" href="recipe.html" />
+    <link rel="prev" title="Conda channels" href="channels.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> conda-build
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.18.11+100.g3543c71.dirty
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install-conda-build.html">Installing and updating conda-build</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Concepts</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="channels.html">Conda channels</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Channels and generating an index</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#channel-layout">Channel layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parts-of-a-channel">Parts of a channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#channeldata-json">channeldata.json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#repodata-json">repodata.json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-an-index-is-generated">How an index is generated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-building-a-channel">Example: Building a channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-details-behind-the-scenes">More details behind the scenes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#caching-package-metadata">Caching package metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#repodata-patching">Repodata patching</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trimming-to-current-repodata">Trimming to &quot;current&quot; repodata</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="recipe.html">Conda-build recipes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="package-naming-conv.html">Package naming conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#what-is-a-package">What is a “package”?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#what-about-channels">What about channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#building-anaconda-installers">Building Anaconda installers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../user-guide/index.html">User guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/index.html">Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">conda-build</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Concepts</a> &raquo;</li>
+        
+      <li>Channels and generating an index</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="channels-and-generating-an-index">
+<h1>Channels and generating an index<a class="headerlink" href="#channels-and-generating-an-index" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="channel-layout">
+<h2>Channel layout<a class="headerlink" href="#channel-layout" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.
+├── channeldata.json
+├── linux-32
+<span class="p">|</span>   ├── repodata.json
+│   └── package-0.0.0.tar.bz2
+├── linux-64
+<span class="p">|</span>   ├── repodata.json
+│   └── package-0.0.0.tar.bz2
+├── win-64
+<span class="p">|</span>   ├── repodata.json
+│   └── package-0.0.0.tar.bz2
+├── win-32
+<span class="p">|</span>   ├── repodata.json
+│   └── package-0.0.0.tar.bz2
+├── osx-64
+<span class="p">|</span>   ├── repodata.json
+│   └── package-0.0.0.tar.bz2
+...
+</pre></div>
+</div>
+</div>
+<div class="section" id="parts-of-a-channel">
+<h2>Parts of a channel<a class="headerlink" href="#parts-of-a-channel" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Channeldata.json contains metadata about the channel, including:</p>
+<blockquote>
+<div><ul class="simple">
+<li>What subdirs the channel contains.</li>
+<li>What packages exist in the channel and what subdirs they are in.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Subdirs are associated with platforms. For example, the linux-64 subdir contains
+packages for linux-64 systems.</p>
+</li>
+<li><p class="first">Repodata.json contains an index of the packages in a subdir. Each subdir will
+have it's own repodata.</p>
+</li>
+<li><p class="first">Channels have packages as tarballs under corresponding subdirs.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="channeldata-json">
+<h2>channeldata.json<a class="headerlink" href="#channeldata-json" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+  <span class="s2">&quot;channeldata_version&quot;</span>: <span class="m">1</span>,
+  <span class="s2">&quot;packages&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;super-fun-package&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;activate.d&quot;</span>: false,
+      <span class="s2">&quot;binary_prefix&quot;</span>: false,
+      <span class="s2">&quot;deactivate.d&quot;</span>: false,
+      <span class="s2">&quot;home&quot;</span>: <span class="s2">&quot;https://github.com/Home/super-fun-package&quot;</span>,
+      <span class="s2">&quot;license&quot;</span>: <span class="s2">&quot;BSD&quot;</span>,
+      <span class="s2">&quot;post_link&quot;</span>: false,
+      <span class="s2">&quot;pre_link&quot;</span>: false,
+      <span class="s2">&quot;pre_unlink&quot;</span>: false,
+      <span class="s2">&quot;reference_package&quot;</span>: <span class="s2">&quot;win-64/super-fun-package-0.1.0-py37_0.tar.bz2&quot;</span>,
+      <span class="s2">&quot;run_exports&quot;</span>: <span class="o">{}</span>,
+      <span class="s2">&quot;subdirs&quot;</span>: <span class="o">[</span>
+        <span class="s2">&quot;win-64&quot;</span>
+      <span class="o">]</span>,
+      <span class="s2">&quot;summary&quot;</span>: <span class="s2">&quot;A fun package! Open me up for rainbows&quot;</span>,
+      <span class="s2">&quot;text_prefix&quot;</span>: false,
+      <span class="s2">&quot;version&quot;</span>: <span class="s2">&quot;0.1.0&quot;</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;subdirs&quot;</span>: <span class="o">[</span>
+      <span class="s2">&quot;win-64&quot;</span>,
+      ...
+    <span class="o">]</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="repodata-json">
+<h2>repodata.json<a class="headerlink" href="#repodata-json" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+  <span class="s2">&quot;packages&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;super-fun-package-0.1.0-py37_0.tar.bz2&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;build&quot;</span>: <span class="s2">&quot;py37_0&quot;</span>,
+      <span class="s2">&quot;build_number&quot;</span>: <span class="m">0</span>,
+      <span class="s2">&quot;depends&quot;</span>: <span class="o">[</span>
+        <span class="s2">&quot;some-depends&quot;</span>
+      <span class="o">]</span>,
+      <span class="s2">&quot;license&quot;</span>: <span class="s2">&quot;BSD&quot;</span>,
+      <span class="s2">&quot;md5&quot;</span>: <span class="s2">&quot;a75683f8d9f5b58c19a8ec5d0b7f796e&quot;</span>,
+      <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;super-fun-package&quot;</span>,
+      <span class="s2">&quot;sha256&quot;</span>: <span class="s2">&quot;1fe3c3f4250e51886838e8e0287e39029d601b9f493ea05c37a2630a9fe5810f&quot;</span>,
+      <span class="s2">&quot;size&quot;</span>: <span class="m">3832</span>,
+      <span class="s2">&quot;subdir&quot;</span>: <span class="s2">&quot;win-64&quot;</span>,
+      <span class="s2">&quot;timestamp&quot;</span>: <span class="m">1530731681870</span>,
+      <span class="s2">&quot;version&quot;</span>: <span class="s2">&quot;0.1.0&quot;</span>
+    <span class="o">}</span>,
+    ...
+  <span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-an-index-is-generated">
+<h2>How an index is generated<a class="headerlink" href="#how-an-index-is-generated" title="Permalink to this headline">¶</a></h2>
+<p>For each subdir:</p>
+<ul class="simple">
+<li>Look at all the packages that exist in the subdir.</li>
+<li>Generate a list of packages to add/update/remove.</li>
+<li>Remove all packages that need to be removed.</li>
+</ul>
+<p>For all packages that need to be added/updated:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Extract the package to access metadata including full package name,
+mtime, size, and index.json.</li>
+<li>Aggregate package metadata to repodata collection.</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>Apply repodata hotfixes (patches).</li>
+<li>Compute and save the reduced <cite>current_index.json</cite> index.</li>
+</ul>
+</div>
+<div class="section" id="example-building-a-channel">
+<h2>Example: Building a channel<a class="headerlink" href="#example-building-a-channel" title="Permalink to this headline">¶</a></h2>
+<p>To build a local channel and put a package in it, follow the directions below.</p>
+<ol class="arabic">
+<li><p class="first">Make the channel structure.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mkdir local-channel
+$ <span class="nb">cd</span> local-channel
+$ mkdir linux-64 osx-64
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Put your favorite package in the channel.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget https://anaconda.org/anaconda/scipy/1.1.0/download/linux-64/scipy-1.1.0-py37hfa4b5c9_1.tar.bz2 -P linux-64
+$ wget https://anaconda.org/anaconda/scipy/1.1.0/download/osx-64/scipy-1.1.0-py37hf5b7bf4_0.tar.bz2 -P osx-64
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Run a conda index. This will generate both channeldata.json for the channel and
+repodata.json for the linux-64 and osx-64 subdirs, along with some other files.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda index .
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Check your work by searching the channel.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda search -c file:/&lt;path to&gt;/local-channel scipy <span class="p">|</span> grep local-channel
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="more-details-behind-the-scenes">
+<h2>More details behind the scenes<a class="headerlink" href="#more-details-behind-the-scenes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="caching-package-metadata">
+<h3>Caching package metadata<a class="headerlink" href="#caching-package-metadata" title="Permalink to this headline">¶</a></h3>
+<p>Caching utilizes the existing repodata.json file if it exists. Indexing checks
+which files to update based on which files are new, removed, or changed since
+the last repodata.json was created. When a package is new or changed, its
+metadata is extracted and cached in the subdir to which the package belongs. The
+subfolder is the <cite>.cache</cite> folder. This folder has one file of interest:
+<cite>stat.json</cite>, which contains results from the <cite>stat</cite> command for each file. This
+is used for understanding when a file has changed and needs to be updated. In
+each of the other subfolders, the extracted metadata file for each package is
+saved as the original package name, plus a <cite>.json</cite> extension. Having these
+already extracted can save a lot of time in fully re-creating the index, should
+that be necessary.</p>
+<p>An aside: one design goal of the <cite>.conda</cite> package format was to make indexing as
+fast as possible. To achieve this, the .conda format separates metadata from the
+actual package contents. Where the old <cite>.tar.bz2</cite> container required extracting
+the entire package to obtain the metadata, the new package format allows
+extraction of metadata without touching the package contents. This allows
+indexing speed to be independent of the package size. Large <cite>.tar.bz2</cite> packages
+can take a very long time to extract and index.</p>
+<p>It is generally never necessary to manually alter the cache. To force an
+update/rescan of all cached packages, you can delete the .cache folder, or you
+can delete just the <cite>.cache/stat.json</cite> file. Ideally, you could remove only one
+package of interest from the cache, but that functionality does not currently
+exist.</p>
+</div>
+<div class="section" id="repodata-patching">
+<h3>Repodata patching<a class="headerlink" href="#repodata-patching" title="Permalink to this headline">¶</a></h3>
+<p>Package repodata is bootstrapped from the index.json file within packages.
+Unfortunately, that metadata is not always correct. Sometimes a version bound
+needs to be added retroactively. The process of altering repodata from the
+values derived from package index.json files is called &quot;hotfixing.&quot; Hotfixing is
+tricky, as it has the potential to break environments that have worked, but it
+is also sometimes necessary to fix environments that are known not to work.</p>
+<div class="section" id="repodata-patches-generated-from-a-python-script">
+<h4>Repodata patches generated from a python script<a class="headerlink" href="#repodata-patches-generated-from-a-python-script" title="Permalink to this headline">¶</a></h4>
+<p>On your own server, you're probably fine to run arbitrary python code that you
+have written to apply your patches. The advantage here is that the patches are
+generated on the fly every time the index is generated. That means that any new
+packages that have been added since the patch python file was last committed
+will be picked up and will have hotfixes applied to them where appropriate.</p>
+<p>Anaconda applies hotfixes by providing a python file to <cite>conda index</cite> that has
+logic on how to alter metadata. Anaconda's repository of hotfixes is at
+<a class="reference external" href="https://github.com/AnacondaRecipes/repodata-hotfixes">https://github.com/AnacondaRecipes/repodata-hotfixes</a></p>
+</div>
+<div class="section" id="repodata-patches-applied-from-a-json-file">
+<h4>Repodata patches applied from a JSON file<a class="headerlink" href="#repodata-patches-applied-from-a-json-file" title="Permalink to this headline">¶</a></h4>
+<p>Unfortunately, you can't always run your python code directly - other people who
+host your patches may not allow you to run code. What you can do instead is
+package the patches as .json files. These will clobber the entries in the
+repodata.json when they are applied.</p>
+<p>This is the approach that conda-forge has to take, for example. Their patch
+creation code is here:
+<a class="reference external" href="https://github.com/conda-forge/conda-forge-repodata-patches-feedstock/tree/master/recipe">https://github.com/conda-forge/conda-forge-repodata-patches-feedstock/tree/master/recipe</a></p>
+<p>What that code does is to download the current repodata.json, then runs their
+python logic to generate the patch JSON file. Those patches are placed into a
+location where Anaconda's mirroring tools will find them and apply them to
+conda-forge's repodata.json at mirroring time.</p>
+<p>The downside here is that this JSON file is only as new as the last time that
+the repodata-patches feedstock last generated a package. Any new packages that
+have been added to the index in the meantime will not have any hotfixes applied
+to them, because the hotfix JSON file does not know about those files.</p>
+</div>
+</div>
+<div class="section" id="trimming-to-current-repodata">
+<h3>Trimming to &quot;current&quot; repodata<a class="headerlink" href="#trimming-to-current-repodata" title="Permalink to this headline">¶</a></h3>
+<p>The number of packages available is always growing. That means conda is always
+having to do more and more work. To slow down this growth, in conda 4.7, we
+added the ability to have alternate repodata.json files that may represent a
+subset of the normal repodata.json. One in particular is
+<cite>current_repodata.json</cite>, which represents:</p>
+<ol class="arabic simple">
+<li>the latest version of each package</li>
+<li>any earlier versions of dependencies needed to make the latest versions satisfiable</li>
+</ol>
+<p>current_repodata.json also keeps only one file type: <cite>.conda</cite> where it is
+available, and <cite>.tar.bz2</cite> where only <cite>.tar.bz2</cite> is available.</p>
+<p>For Anaconda's defaults &quot;main&quot; channel, the current_repodata.json file is
+approximately 1/7 the size of repodata.json. This makes downloading the repodata
+faster, and it also makes loading the repodata into its python representation
+faster.</p>
+<p>For those interested in how this is achieved, please refer to the code at
+<a class="reference external" href="https://github.com/conda/conda-build/blob/90a6de55d8b9e36fc4a8c471b566d356e07436c7/conda_build/index.py#L695-L737">https://github.com/conda/conda-build/blob/90a6de55d8b9e36fc4a8c471b566d356e07436c7/conda_build/index.py#L695-L737</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="recipe.html" class="btn btn-neutral float-right" title="Conda-build recipes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="channels.html" class="btn btn-neutral float-left" title="Conda channels" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Anaconda, Inc.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
