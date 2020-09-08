@@ -2,13 +2,6 @@
 2020-09-04 3.20.1:
 ------------------
 
-Enhancements:
--------------
-
-
-
-
-
 Bug fixes:
 ----------
 
@@ -16,27 +9,6 @@ Bug fixes:
 * Add target to recognized fields in `outputs` #4034
 * Various overlinking fixes for Windows #4036
 * variants: remove hard-coded default path for CONDA_BUILD_SYSROOT
-
-Deprecations:
--------------
-
-
-
-
-
-Docs:
------
-
-
-
-
-
-Other:
-------
-
-
-
-
 
 Contributors:
 -------------
